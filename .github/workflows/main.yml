@@ -29,14 +29,14 @@ jobs:
           ref: a201105442c3603a34cb609b70cef71072e71392
       - name: Install Dependencies
         run: npm ci
-      - name: Delete Defaults
-        run: rm -rf {content,quartz.config.ts,quartz.layout.ts}
+      - name: Delete Default Contents
+        run: rm -rf content
       - name: Checkout Contents
         uses: actions/checkout@v4
         with:
           path: content
       - name: Move Configurations
-        run: mv content/quartz.*.ts .
+        run: mv content/.quartz/* .
       - name: Build
         run: npx quartz build
       - name: Upload artifact
